@@ -37,7 +37,7 @@ public class Pedido implements Serializable {
     private Set<ItemPedido> itens = new HashSet<>();
 
     public Pedido() {
-        super();
+
     }
 
     public Pedido(Integer id, Date instante, Cliente cliente, Endereco enderecoDeEntrega) {
