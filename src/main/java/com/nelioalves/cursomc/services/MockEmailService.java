@@ -10,7 +10,7 @@ public class MockEmailService extends AbstractEmailService {
 
     @Override
     public void sendEmail(SimpleMailMessage msg) {
-        LOG.info("Simulando envio de E-mail...");
+        LOG.info("Simulando envio de e-mail...");
         LOG.info(msg.toString());
         LOG.info("E-mail enviado.");
     }

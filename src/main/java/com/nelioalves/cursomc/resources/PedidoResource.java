@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.nelioalves.cursomc.domain.Pedido;
+import com.nelioalves.cursomc.services.EmailService;
 import com.nelioalves.cursomc.services.PedidoService;
 
 @RestController
@@ -19,6 +20,9 @@ public class PedidoResource {
 
     @Autowired
     private PedidoService service;
+
+    @Autowired
+    private EmailService emailService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<Pedido> find(@PathVariable Integer id) {
@@ -32,6 +36,13 @@ public class PedidoResource {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @RequestMapping(value = "/{id}/sendconfirmation", method = RequestMethod.GET)
+    public ResponseEntity<Void> sendCofirmation(@PathVariable Integer id) {
+        Pedido obj = service.find(id);
+        emailService.sendOrderConfirmationEmail(obj);
+        return ResponseEntity.noContent().build();
     }
 
 }

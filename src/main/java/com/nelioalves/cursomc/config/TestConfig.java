@@ -23,8 +23,8 @@ public class TestConfig {
     }
 
     @Bean
-    public EmailService sendEmail() {
+    public EmailService emailService() {
         return new MockEmailService();
     }
-    
+
 }
