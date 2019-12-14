@@ -66,6 +66,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                     + "\"message\": \"Email ou senha inválidos\", "
                     + "\"path\": \"/login\"}";
         }
+
     }
 
 }
